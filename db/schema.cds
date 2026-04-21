@@ -31,7 +31,7 @@ entity Turnos
     motivo : String;
     doctor : Association to one Doctores;
     paciente : Association to one Pacientes;
-    especialidad : String;
+    especialidad : String; //yea
 }
 
 type Enum1 : String enum
