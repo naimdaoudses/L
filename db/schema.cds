@@ -1,42 +1,61 @@
 namespace consultorio.hospital;
 
-entity Doctores
+entity Doctor
 {
     key ID : String;
     apellido : String;
     email : String;
     especialidad : String;
     nombre : String;
-    turnos : Association to many Turnos on turnos.doctor = $self;
+    turnos : Association to many Turno on turnos.doctor = $self;
 }
 
-entity Pacientes
+entity Paciente
 {
     key ID : String;
     apellido : String;
-    dni : Decimal;
+    dni : Integer;
     email : String;
     nombre : String;
     telefono : String;
-    turnos : Association to many Turnos on turnos.paciente = $self;
-    edad : Decimal;
+    edad : Integer;
+    turnos : Association to many Turno on turnos.paciente = $self;
+    obraSocial : String;
 }
 
-entity Turnos
+entity Turno
 {
     key ID : UUID;
     TurnoId : String;
-    estado_turno : Enum1;
+    estado_turno : EstadoTurno;
     fechaHora : DateTime;
     motivo : String;
-    doctor : Association to one Doctores;
-    paciente : Association to one Pacientes;
-    especialidad : String; //yea
+    doctor : Association to one Doctor;
+    especialidad : String;
+    recetas : Composition of many Receta on recetas.turno = $self;
+    paciente : Association to one Paciente;
 }
 
-type Enum1 : String enum
+entity Receta
+{
+    key ID : UUID;
+    Tipo : TipoReceta;
+    turno : Association to one Turno;
+    carnet : String;
+    fecha : DateTime;
+    descripcion : String;
+}
+
+type EstadoTurno : String enum
 {
     pendiente;
     completado;
     cancelado;
+}
+
+type TipoReceta : String enum
+{
+    medicamento;
+    estudio;
+    certificado;
 }
