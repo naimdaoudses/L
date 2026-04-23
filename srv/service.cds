@@ -11,3 +11,4 @@ service ConsultoriaMedicaService
 annotate ConsultoriaMedicaService with @requires : [
     'authenticated-user'
 ];
+annotate ConsultoriaMedicaService with @odata.draft.enabled; 

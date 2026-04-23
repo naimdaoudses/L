@@ -2,7 +2,7 @@ namespace consultorio.hospital;
 
 entity Doctor
 {
-    key ID : String;
+    key ID : UUID;
     apellido : String;
     email : String;
     especialidad : String;
@@ -12,7 +12,7 @@ entity Doctor
 
 entity Paciente
 {
-    key ID : String;
+    key ID : UUID;
     apellido : String;
     dni : Integer;
     email : String;
