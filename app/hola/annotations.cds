@@ -1,4 +1,6 @@
 using ConsultoriaMedicaService as service from '../../srv/service';
+using from '../../db/schema';
+
 annotate service.Turnos with {
     doctor @(
         Common.ValueList : {
@@ -306,6 +308,8 @@ annotate service.Turnos with @(
         },
         Text : '{i18n>Paciente}',
     },
+    UI.Identification : [
+    ],
 );
 
 annotate service.Turnos with {
@@ -421,14 +425,36 @@ annotate service.Pacientes with @(
     },
 );
 
-annotate service.Receta with @(
+annotate service.Recetas with @(
     UI.LineItem : [
         { Value: Tipo, Label: 'Tipo de Receta' },
         { Value: fecha, Label: 'Fecha' },
         { Value: descripcion, Label: 'Descripción' },
         { Value: carnet, Label: 'Nro Carnet' }
-    ]
+    ],
+    UI.LineItem #hola : [
+    ],
+    UI.LineItem #Receta : [
+    ],
+    
 );
+annotate service.Recetas with {
+    Tipo @(
+        Common.Label : 'Tipo de Receta',
+        Common.ValueListWithFixedValues : true,
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'TiposReceta',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : Tipo,
+                    ValueListProperty : 'ID'
+                }
+            ]
+        }
+    )
+};
 annotate service.Doctores with @(
     UI.LineItem #tableView : [
     ],
@@ -467,34 +493,6 @@ annotate service.Doctores with {
 
 annotate service.Doctores with {
     especialidad @Common.FieldControl : #ReadOnly
-};
-
-annotate service.Pacientes with {
-    apellido @Common.FieldControl : #ReadOnly
-};
-
-annotate service.Pacientes with {
-    nombre @Common.FieldControl : #ReadOnly
-};
-
-annotate service.Pacientes with {
-    dni @Common.FieldControl : #ReadOnly
-};
-
-annotate service.Pacientes with {
-    edad @Common.FieldControl : #ReadOnly
-};
-
-annotate service.Pacientes with {
-    email @Common.FieldControl : #ReadOnly
-};
-
-annotate service.Pacientes with {
-    obraSocial @Common.FieldControl : #ReadOnly
-};
-
-annotate service.Pacientes with {
-    telefono @Common.FieldControl : #ReadOnly
 };
 
 annotate service.Turnos with {

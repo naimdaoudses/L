@@ -6,10 +6,15 @@ service ConsultoriaMedicaService
     entity Turnos as projection on my.Turno;
     entity Pacientes as projection on my.Paciente;
     entity Doctores as projection on my.Doctor;
+    entity Recetas as projection on my.Receta;
 
     // Agregamos la entidad virtual para los estados (solución del desplegable)
     @readonly
     entity EstadosTurno {
+        key ID : String;
+    }
+    @readonly
+    entity TiposReceta {
         key ID : String;
     }
 }
