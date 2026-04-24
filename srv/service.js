@@ -2,7 +2,6 @@ const cds = require('@sap/cds')
 
 module.exports = (srv) => {
     const { Turnos } = srv.entities
-
     srv.before('CREATE', 'Turnos', (req) => {
         const { fechaHora } = req.data
         

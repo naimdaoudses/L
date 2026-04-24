@@ -7,13 +7,13 @@
     "applicationVersion": {
       "version": "0.0.1"
     },
-    "title": "{{consultoriaMedicaBohemia}}",
+    "title": "{{appTitle}}",
     "description": "{{appDescription}}",
     "resources": "resources.json",
     "sourceTemplate": {
       "id": "@sap/generator-fiori:lrop",
       "version": "1.22.0",
-      "toolsId": "87999f63-10cd-4c1e-abd6-589b5ffd6c18"
+      "toolsId": "0c86ac5f-3bae-457f-b1c6-fe429415f3bc"
     },
     "dataSources": {
       "mainService": {

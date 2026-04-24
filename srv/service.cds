@@ -12,3 +12,29 @@ annotate ConsultoriaMedicaService with @requires : [
     'authenticated-user'
 ];
 annotate ConsultoriaMedicaService with @odata.draft.enabled; 
+// ... (lo que ya tenías en service.cds) ...
+
+annotate ConsultoriaMedicaService.Turnos with @odata.draft.enabled;
+
+annotate ConsultoriaMedicaService.Turnos with @(
+    UI.LineItem : [
+        { $Type: 'UI.DataField', Value: TurnoId },
+        { $Type: 'UI.DataField', Value: fechaHora },
+        // ... el resto de tus campos ...
+    ],
+    UI.FieldGroup #GeneratedGroup1 : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            { $Type: 'UI.DataField', Value: TurnoId },
+            // ... el resto de tus campos ...
+        ],
+    },
+    UI.Facets : [
+        {
+            $Type : 'UI.ReferenceFacet',
+            ID : 'GeneratedFacet1',
+            Label : 'Información General',
+            Target : '@UI.FieldGroup#GeneratedGroup1',
+        },
+    ]
+);

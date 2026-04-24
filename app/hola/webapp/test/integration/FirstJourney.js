@@ -11,6 +11,7 @@ sap.ui.define([
             Given.iStartMyApp();
 
             Then.onTheTurnosList.iSeeThisPage();
+            Then.onTheTurnosList.onTable().iCheckColumns(2, {"TurnoId":{"header":"TurnoId"},"fechaHora":{"header":"fechaHora"}});
 
         });
 
