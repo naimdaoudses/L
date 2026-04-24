@@ -92,6 +92,11 @@
           "pattern": "Turnos({key}):?query:",
           "name": "TurnosObjectPage",
           "target": "TurnosObjectPage"
+        },
+        {
+          "name": "PacientesObjectPage",
+          "pattern": "Pacientes({PacientesKey}):?query:",
+          "target": "PacientesObjectPage"
         }
       ],
       "targets": {
@@ -108,6 +113,11 @@
                   "detail": {
                     "route": "TurnosObjectPage"
                   }
+                },
+                "Pacientes": {
+                  "detail": {
+                    "route": "PacientesObjectPage"
+                  }
                 }
               },
               "controlConfiguration": {
@@ -116,6 +126,20 @@
                     "type": "ResponsiveTable"
                   }
                 }
+              },
+              "hideFilterBar": false,
+              "views": {
+                "paths": [
+                  {
+                    "key": "tableView",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView"
+                  },
+                  {
+                    "key": "tableView2",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView",
+                    "entitySet": "Pacientes"
+                  }
+                ]
               }
             }
           }
@@ -128,6 +152,17 @@
             "settings": {
               "editableHeaderContent": false,
               "contextPath": "/Turnos"
+            }
+          }
+        },
+        "PacientesObjectPage": {
+          "type": "Component",
+          "id": "PacientesObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/Pacientes"
             }
           }
         }

@@ -29,7 +29,7 @@ entity Turno
     TurnoId : String;
     estado_turno : EstadoTurno;
     fechaHora : DateTime;
-    motivo : String;
+    motivo : LargeString;
     doctor : Association to one Doctor;
     especialidad : String;
     recetas : Composition of many Receta on recetas.turno = $self;

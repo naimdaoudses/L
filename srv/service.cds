@@ -6,12 +6,18 @@ service ConsultoriaMedicaService
     entity Turnos as projection on my.Turno;
     entity Pacientes as projection on my.Paciente;
     entity Doctores as projection on my.Doctor;
+
+    // Agregamos la entidad virtual para los estados (solución del desplegable)
+    @readonly
+    entity EstadosTurno {
+        key ID : String;
+    }
 }
 
 annotate ConsultoriaMedicaService with @requires : [
     'authenticated-user'
 ];
-annotate ConsultoriaMedicaService with @odata.draft.enabled; 
+annotate ConsultoriaMedicaService with @odata.draft.enabled;
 // ... (lo que ya tenías en service.cds) ...
 
 annotate ConsultoriaMedicaService.Turnos with @odata.draft.enabled;
@@ -38,3 +44,5 @@ annotate ConsultoriaMedicaService.Turnos with @(
         },
     ]
 );
+
+annotate ConsultoriaMedicaService.Pacientes with @odata.draft.enabled;
