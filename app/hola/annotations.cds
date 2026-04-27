@@ -101,11 +101,6 @@ annotate service.Turnos with @(
     UI.LineItem : [
         {
             $Type : 'UI.DataField',
-            Value : TurnoId,
-            Label : '{i18n>IdDeTurno}',
-        },
-        {
-            $Type : 'UI.DataField',
             Value : paciente.apellido,
             Label : '{i18n>ApellidoPaciente}',
         },
